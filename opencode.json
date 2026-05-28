@@ -1,10 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "openrouter": {
-      "models": {}
+  "mcp": {
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/workshop"
+      ]
     }
-  },
-  "model": "openrouter/{env:OPENROUTER_MODEL}",
-  "mcp": {}
+  }
 }
