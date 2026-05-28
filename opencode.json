@@ -5,6 +5,6 @@
       "models": {}
     }
   },
-  "model": "{env:OPENROUTER_MODEL}",
+  "model": "openrouter/{env:OPENROUTER_MODEL}",
   "mcp": {}
 }
