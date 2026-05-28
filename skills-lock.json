@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "cli-anything-libreoffice": {
+      "source": "hkuds/cli-anything",
+      "sourceType": "github",
+      "skillPath": "skills/cli-anything-libreoffice/SKILL.md",
+      "computedHash": "76b800ba7ef5871bd8bcf1743d24f986515a0d5206dfc34afcee5bc0e3a18fb7"
+    }
+  }
+}
