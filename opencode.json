@@ -9,6 +9,15 @@
         "@modelcontextprotocol/server-filesystem",
         "/workshop"
       ]
+    },
+    "postgres": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "{env:WORKSHOP_DATABASE_URL}"
+      ]
     }
   }
 }
