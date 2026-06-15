@@ -7,7 +7,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-filesystem",
-        "/workshop"
+        "/config/workshop"
       ]
     },
     "postgres": {
