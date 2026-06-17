@@ -22,3 +22,14 @@ sigue las indicaciones de cada prompt y no asumas reglas de validación por tu c
 
 Aplica lo que se te pida en cada paso del expositor (extracción, cruce, Excel). Trabaja solo
 con datos reales de los PDF y del CRM; no inventes información.
+
+## Cómo redactar la columna "Observación"
+
+Cuando generes el Excel, escribe en `Observación` el motivo concreto de cada resultado, no un
+texto genérico:
+
+- Cliente no existe en el CRM → `Cliente no encontrado`
+- El nº de póliza no corresponde al cliente → `Póliza no coincide`
+- El monto del PDF difiere del CRM → `Monto PDF ≠ CRM` (cita ambos, p. ej. `$15.000.000 vs $13.000.000`)
+- Cliente inactivo → `Cliente inactivo`
+- Todo correcto → `Coincide`
