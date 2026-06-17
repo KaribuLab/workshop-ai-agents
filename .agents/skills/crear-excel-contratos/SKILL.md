@@ -9,7 +9,7 @@ description: >-
 # crear-excel-contratos
 
 CLI del workshop para generar el Excel final del cruce de contratos. El agente arma las
-filas (resultado de leer los PDFs con `pdftotext` y consultar el CRM por el MCP `postgres`)
+filas (resultado de leer los PDFs con `pdftotext` y consultar el CRM por el MCP `conector-base-datos`)
 y este CLI las formatea en un `.xlsx`.
 
 ## Cuándo usar
@@ -20,15 +20,15 @@ validar cada contrato y necesitas el archivo `.xlsx`. No escribas openpyxl a man
 ## Uso
 
 ```bash
-# desde un archivo JSON
-python scripts/crear_excel.py --input cruce.json --output resultados.xlsx
+# desde un archivo JSON (el .xlsx se genera en el Escritorio)
+python scripts/crear_excel.py --input cruce.json
 
 # o por stdin
-cat cruce.json | python scripts/crear_excel.py -o resultados.xlsx
+cat cruce.json | python scripts/crear_excel.py
 ```
 
 - `-i, --input`  : JSON de entrada (o `-`/omitir para leer de stdin).
-- `-o, --output` : ruta del `.xlsx` (default: `resultados.xlsx`).
+- `-o, --output` : ruta del `.xlsx` (default: `~/Desktop/resultados.xlsx`, el Escritorio).
 
 ## Formato de entrada (JSON)
 

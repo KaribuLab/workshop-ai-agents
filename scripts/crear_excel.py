@@ -4,8 +4,11 @@
 El agente arma el cruce (PDF vs CRM) como una lista JSON y este CLI lo formatea en .xlsx.
 
 Uso:
-    python scripts/crear_excel.py --input cruce.json --output resultados.xlsx
-    cat cruce.json | python scripts/crear_excel.py -o resultados.xlsx
+    python scripts/crear_excel.py --input cruce.json
+    cat cruce.json | python scripts/crear_excel.py
+
+Por defecto el .xlsx se genera en el Escritorio (~/Desktop/resultados.xlsx). Se puede
+cambiar con --output.
 
 Cada fila del JSON admite estas claves (todas opcionales salvo lo que quieras mostrar):
     archivo, cliente, cliente_existe, estado_cliente, poliza_pdf, poliza_bdd,
@@ -15,6 +18,7 @@ Si "estado" no viene, se deriva con la precedencia de las reglas del workshop.
 """
 import argparse
 import json
+import os
 import sys
 import unicodedata
 
@@ -172,11 +176,22 @@ def construir(filas, salida):
     return contador
 
 
+def salida_por_defecto():
+    """Por defecto el Excel se genera en el Escritorio si existe; si no, en el directorio actual."""
+    escritorio = os.path.join(os.path.expanduser("~"), "Desktop")
+    if os.path.isdir(escritorio):
+        return os.path.join(escritorio, "resultados.xlsx")
+    return "resultados.xlsx"
+
+
 def main():
     ap = argparse.ArgumentParser(description="Genera el Excel de validación de contratos.")
     ap.add_argument("-i", "--input", help="JSON de entrada (default: stdin).")
-    ap.add_argument("-o", "--output", default="resultados.xlsx", help="Archivo .xlsx de salida.")
+    ap.add_argument("-o", "--output", default=None,
+                    help="Archivo .xlsx de salida (default: ~/Desktop/resultados.xlsx).")
     args = ap.parse_args()
+
+    salida = args.output or salida_por_defecto()
 
     try:
         filas = cargar_filas(args)
@@ -188,12 +203,12 @@ def main():
         print("Advertencia: la lista de filas está vacía; se generará un Excel solo con encabezado.", file=sys.stderr)
 
     try:
-        contador = construir(filas, args.output)
+        contador = construir(filas, salida)
     except Exception as e:  # noqa: BLE001
         print(f"Error generando el Excel: {e}", file=sys.stderr)
         return 1
 
-    print(f"OK: {args.output} generado con {len(filas)} fila(s)  "
+    print(f"OK: {salida} generado con {len(filas)} fila(s)  "
           f"(OK={contador['OK']}  REVISAR={contador['REVISAR']}  ERROR={contador['ERROR']}).")
     return 0
 
