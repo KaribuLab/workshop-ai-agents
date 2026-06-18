@@ -23,6 +23,24 @@ sigue las indicaciones de cada prompt y no asumas reglas de validación por tu c
 Aplica lo que se te pida en cada paso del expositor (extracción, cruce, Excel). Trabaja solo
 con datos reales de los PDF y del CRM; no inventes información.
 
+## Reglas del cruce (PDF vs CRM)
+
+Para **cada** contrato realiza las 4 comprobaciones siguientes, en este orden de precedencia
+(la primera que falle determina el resultado). **La clave para identificar al cliente es el
+RUT**, no el "ID Cliente" del PDF (que puede ser ficticio).
+
+1. **Cliente existe**: busca el RUT del PDF en `clientes`. Si no está → `ERROR` (Cliente no encontrado).
+2. **Póliza coincide**: busca el número de póliza del PDF en `polizas`. Si **no existe**, o existe
+   pero su `cliente_id` **no corresponde** al cliente del RUT → `ERROR` (Póliza no coincide).
+   ⚠️ Haz esta comprobación **siempre**, aunque el monto coincida: hay contratos cuyo RUT, estado
+   y monto están correctos pero citan una póliza inexistente (p. ej. `990112` en vez de `112`).
+3. **Monto coincide**: compara el monto asegurado del PDF con `financiera.monto_asegurado` de esa
+   póliza. Si difieren → `REVISAR` (Monto PDF ≠ CRM).
+4. **Cliente activo**: si `clientes.estado` es `Inactivo` → `REVISAR` (Cliente inactivo).
+
+Si las 4 pasan → `OK` (Coincide). Nota: un nombre escrito distinto pero con el **mismo RUT** se
+considera coincidente (no es error).
+
 ## Cómo redactar la columna "Observación"
 
 Cuando generes el Excel, escribe en `Observación` el motivo concreto de cada resultado, no un

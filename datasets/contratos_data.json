@@ -1,0 +1,222 @@
+[
+  {
+    "n": 1,
+    "nombre": "María González",
+    "id_cliente": "1",
+    "rut": "12.345.678-5",
+    "poliza": "101",
+    "tipo": "Auto",
+    "fecha_emision": "2025-07-01",
+    "prima": "$45.000",
+    "monto": "$8.500.000"
+  },
+  {
+    "n": 2,
+    "nombre": "Lucía Vega",
+    "id_cliente": "12",
+    "rut": "7.654.321-0",
+    "poliza": "990112",
+    "tipo": "Vida",
+    "fecha_emision": "2025-10-27",
+    "prima": "$75.000",
+    "monto": "$50.000.000"
+  },
+  {
+    "n": 3,
+    "nombre": "Carla Soto",
+    "id_cliente": "9",
+    "rut": "8.765.432-1",
+    "poliza": "109",
+    "tipo": "Vida",
+    "fecha_emision": "2025-10-20",
+    "prima": "$30.000",
+    "monto": "$25.000.000"
+  },
+  {
+    "n": 4,
+    "nombre": "Juan Pérez",
+    "id_cliente": "2",
+    "rut": "9.876.543-2",
+    "poliza": "102",
+    "tipo": "Salud",
+    "fecha_emision": "2025-06-30",
+    "prima": "$62.000",
+    "monto": "$15.000.000"
+  },
+  {
+    "n": 5,
+    "nombre": "Café Central Ltda.",
+    "id_cliente": "15",
+    "rut": "76.444.555-6",
+    "poliza": "115",
+    "tipo": "Salud",
+    "fecha_emision": "2025-06-28",
+    "prima": "$51.000",
+    "monto": "$15.000.000"
+  },
+  {
+    "n": 6,
+    "nombre": "Comercializadora Aurora SpA",
+    "id_cliente": "9001",
+    "rut": "26.777.888-1",
+    "poliza": "700001",
+    "tipo": "Auto",
+    "fecha_emision": "2025-05-12",
+    "prima": "$60.000",
+    "monto": "$20.000.000"
+  },
+  {
+    "n": 7,
+    "nombre": "Comercial Andes Ltda.",
+    "id_cliente": "3",
+    "rut": "76.111.222-3",
+    "poliza": "103",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-09-10",
+    "prima": "$55.000",
+    "monto": "$60.000.000"
+  },
+  {
+    "n": 8,
+    "nombre": "Transportes del Sur SA",
+    "id_cliente": "4",
+    "rut": "96.555.111-2",
+    "poliza": "104",
+    "tipo": "Auto",
+    "fecha_emision": "2025-08-22",
+    "prima": "$120.000",
+    "monto": "$18.000.000"
+  },
+  {
+    "n": 9,
+    "nombre": "Diego Fuentes",
+    "id_cliente": "10",
+    "rut": "10.111.222-3",
+    "poliza": "110",
+    "tipo": "Salud",
+    "fecha_emision": "2025-07-31",
+    "prima": "$35.000",
+    "monto": "$10.000.000"
+  },
+  {
+    "n": 10,
+    "nombre": "Tech Patagonia SpA",
+    "id_cliente": "13",
+    "rut": "77.222.333-4",
+    "poliza": "990113",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-06-20",
+    "prima": "$58.000",
+    "monto": "$48.000.000"
+  },
+  {
+    "n": 11,
+    "nombre": "Pedro Rojas",
+    "id_cliente": "5",
+    "rut": "11.222.333-4",
+    "poliza": "105",
+    "tipo": "Salud",
+    "fecha_emision": "2025-06-25",
+    "prima": "$48.000",
+    "monto": "$12.000.000"
+  },
+  {
+    "n": 12,
+    "nombre": "Logística Express SA",
+    "id_cliente": "16",
+    "rut": "96.333.222-1",
+    "poliza": "116",
+    "tipo": "Vida",
+    "fecha_emision": "2025-09-01",
+    "prima": "$160.000",
+    "monto": "$105.000.000"
+  },
+  {
+    "n": 13,
+    "nombre": "INDUSTRIAL DEL SUR SA",
+    "id_cliente": "18",
+    "rut": "96.555.444-3",
+    "poliza": "118",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-10-15",
+    "prima": "$95.000",
+    "monto": "$70.000.000"
+  },
+  {
+    "n": 14,
+    "nombre": "Panadería La Espiga",
+    "id_cliente": "6",
+    "rut": "77.333.444-5",
+    "poliza": "106",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-06-18",
+    "prima": "$52.000",
+    "monto": "$55.000.000"
+  },
+  {
+    "n": 15,
+    "nombre": "Sebastián Morales",
+    "id_cliente": "9002",
+    "rut": "21.999.111-4",
+    "poliza": "700002",
+    "tipo": "Salud",
+    "fecha_emision": "2025-04-08",
+    "prima": "$40.000",
+    "monto": "$9.000.000"
+  },
+  {
+    "n": 16,
+    "nombre": "Ana Muñoz",
+    "id_cliente": "7",
+    "rut": "13.444.555-6",
+    "poliza": "107",
+    "tipo": "Auto",
+    "fecha_emision": "2025-11-03",
+    "prima": "$47.000",
+    "monto": "$9.200.000"
+  },
+  {
+    "n": 17,
+    "nombre": "Roberto Díaz",
+    "id_cliente": "14",
+    "rut": "12.888.777-6",
+    "poliza": "990114",
+    "tipo": "Auto",
+    "fecha_emision": "2026-04-14",
+    "prima": "$49.000",
+    "monto": "$10.500.000"
+  },
+  {
+    "n": 18,
+    "nombre": "Comercial Petersen Ltda.",
+    "id_cliente": "11",
+    "rut": "76.999.000-1",
+    "poliza": "111",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-09-05",
+    "prima": "$70.000",
+    "monto": "$45.000.000"
+  },
+  {
+    "n": 19,
+    "nombre": "Sofía Castro",
+    "id_cliente": "17",
+    "rut": "13.222.111-0",
+    "poliza": "117",
+    "tipo": "Hogar",
+    "fecha_emision": "2025-06-16",
+    "prima": "$44.000",
+    "monto": "$45.000.000"
+  },
+  {
+    "n": 20,
+    "nombre": "Minera Altiplano SA",
+    "id_cliente": "8",
+    "rut": "96.777.888-9",
+    "poliza": "108",
+    "tipo": "Vida",
+    "fecha_emision": "2025-12-15",
+    "prima": "$185.000",
+    "monto": "$120.000.000"
+  }
+]
