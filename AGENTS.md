@@ -15,8 +15,9 @@ sigue las indicaciones de cada prompt y no asumas reglas de validación por tu c
   - `financiera(poliza_id, prima, monto_asegurado)`
 
 - **CLI para el Excel**: `scripts/crear_excel.py` genera el archivo de resultados a partir
-  de un JSON. Por defecto lo deja en el **Escritorio** (`~/Desktop/resultados.xlsx`). Ver la
-  skill **`crear-excel-contratos`** para su uso.
+  de un JSON. **Siempre** lo deja en el **Escritorio** (`~/Desktop/resultados.xlsx`); no uses
+  `-o` ni guardes en `config/contratos` ni en carpetas del repo. Ver la skill
+  **`crear-excel-contratos`** para su uso.
 
 ## Cómo trabajar
 

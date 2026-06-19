@@ -20,7 +20,7 @@ validar cada contrato y necesitas el archivo `.xlsx`. No escribas openpyxl a man
 ## Uso
 
 ```bash
-# desde un archivo JSON (el .xlsx se genera en el Escritorio)
+# desde un archivo JSON (el .xlsx SIEMPRE se genera en el Escritorio)
 python scripts/crear_excel.py --input cruce.json
 
 # o por stdin
@@ -28,7 +28,9 @@ cat cruce.json | python scripts/crear_excel.py
 ```
 
 - `-i, --input`  : JSON de entrada (o `-`/omitir para leer de stdin).
-- `-o, --output` : ruta del `.xlsx` (default: `~/Desktop/resultados.xlsx`, el Escritorio).
+- **Salida fija**: el `.xlsx` se escribe **siempre** en `~/Desktop/resultados.xlsx`
+  (en OpenCode/Karibu: `/config/Desktop/resultados.xlsx`). **No uses `-o/--output`**
+  ni rutas como `config/contratos`, `Desktop/contratos` o `datasets/contratos`.
 
 ## Formato de entrada (JSON)
 
@@ -59,6 +61,8 @@ Una lista de objetos, uno por contrato. Claves admitidas:
 
 ## Salida
 
+**Siempre** en `~/Desktop/resultados.xlsx` (OpenCode: `/config/Desktop/resultados.xlsx`).
+
 `.xlsx` con las columnas:
 `Archivo | Cliente | Cliente existe | Estado cliente | Póliza PDF | Póliza BDD |
 Coincide póliza | Monto PDF | Monto CRM | Estado | Observación`
@@ -68,7 +72,8 @@ una fila de **TOTALES** con los conteos.
 
 ## Notas para el agente
 
-1. Escribe el JSON del cruce a un archivo (p. ej. `cruce.json`) y pásalo con `-i`.
-2. Verifica el exit code (0 = ok) y que el `.xlsx` exista al terminar.
-3. Usa rutas relativas a `/config/workshop` (el directorio del workshop) o rutas absolutas.
+1. Escribe el JSON del cruce a un archivo (p. ej. `cruce.json` en `/config/workshop`) y pásalo con `-i`.
+2. **No pases `-o/--output`**. El Excel va **siempre** al Escritorio: `~/Desktop/resultados.xlsx`.
+   No lo guardes en `config/contratos`, `Desktop/contratos` ni en carpetas del repo.
+3. Verifica el exit code (0 = ok) y que exista `~/Desktop/resultados.xlsx` al terminar.
 4. Incluye una `observacion` breve y útil (p. ej. `"Monto PDF $15.000.000 vs CRM $13.000.000"`).

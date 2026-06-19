@@ -7,8 +7,8 @@ Uso:
     python scripts/crear_excel.py --input cruce.json
     cat cruce.json | python scripts/crear_excel.py
 
-Por defecto el .xlsx se genera en el Escritorio (~/Desktop/resultados.xlsx). Se puede
-cambiar con --output.
+Por defecto el .xlsx se genera en el Escritorio (~/Desktop/resultados.xlsx). Rutas
+fuera del Escritorio (p. ej. config/contratos) se redirigen automáticamente al Escritorio.
 
 Cada fila del JSON admite estas claves (todas opcionales salvo lo que quieras mostrar):
     archivo, cliente, cliente_existe, estado_cliente, poliza_pdf, poliza_bdd,
@@ -176,22 +176,55 @@ def construir(filas, salida):
     return contador
 
 
-def salida_por_defecto():
-    """Por defecto el Excel se genera en el Escritorio si existe; si no, en el directorio actual."""
-    escritorio = os.path.join(os.path.expanduser("~"), "Desktop")
-    if os.path.isdir(escritorio):
-        return os.path.join(escritorio, "resultados.xlsx")
-    return "resultados.xlsx"
+def resolver_escritorio():
+    """Ruta del Escritorio del usuario (OpenCode/Karibu usa /config como HOME)."""
+    candidatos = []
+    home = os.path.expanduser("~")
+    candidatos.append(os.path.join(home, "Desktop"))
+    candidatos.append(os.path.join(home, "Escritorio"))
+    xdg = os.environ.get("XDG_DESKTOP_DIR")
+    if xdg:
+        candidatos.append(os.path.expanduser(xdg))
+    candidatos.append("/config/Desktop")
+    for ruta in candidatos:
+        if ruta and os.path.isdir(ruta):
+            return ruta
+    destino = os.path.join(home, "Desktop")
+    os.makedirs(destino, exist_ok=True)
+    return destino
+
+
+def resolver_salida(output_arg):
+    """Siempre genera el Excel en el Escritorio (~/Desktop/resultados.xlsx).
+
+    Solo se respeta --output si la ruta ya está dentro del Escritorio; cualquier
+    otra ruta (p. ej. config/contratos, datasets/contratos o el cwd del repo)
+    se redirige al Escritorio para que el participante lo encuentre ahí.
+    """
+    escritorio = os.path.abspath(resolver_escritorio())
+    destino = os.path.join(escritorio, "resultados.xlsx")
+    if not output_arg:
+        return destino
+    abs_out = os.path.abspath(os.path.expanduser(output_arg))
+    if abs_out == escritorio or abs_out.startswith(escritorio + os.sep):
+        return abs_out
+    print(
+        f"Nota: la salida se generará en el Escritorio ({destino}), "
+        f"no en {output_arg}.",
+        file=sys.stderr,
+    )
+    return destino
 
 
 def main():
     ap = argparse.ArgumentParser(description="Genera el Excel de validación de contratos.")
     ap.add_argument("-i", "--input", help="JSON de entrada (default: stdin).")
     ap.add_argument("-o", "--output", default=None,
-                    help="Archivo .xlsx de salida (default: ~/Desktop/resultados.xlsx).")
+                    help="Ignorado salvo que la ruta esté en el Escritorio; "
+                         "por defecto: ~/Desktop/resultados.xlsx.")
     args = ap.parse_args()
 
-    salida = args.output or salida_por_defecto()
+    salida = resolver_salida(args.output)
 
     try:
         filas = cargar_filas(args)
