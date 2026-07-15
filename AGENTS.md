@@ -19,6 +19,12 @@ sigue las indicaciones de cada prompt y no asumas reglas de validación por tu c
   `-o` ni guardes en `config/contratos` ni en carpetas del repo. Ver la skill
   **`crear-excel-contratos`** para su uso.
 
+- **CLI para el PDF**: `scripts/crear_pdf.py` genera el mismo informe del cruce en **PDF** a
+  partir del **mismo JSON**. También lo deja **siempre** en el Escritorio
+  (`~/Desktop/resultados.pdf`). Ver la skill **`crear-pdf-contratos`**. El Excel y el PDF son
+  deliverables **alternativos/complementarios** del mismo paso final (usa el que pida el
+  expositor; puedes generar ambos con el mismo `cruce.json`), no un paso extra obligatorio.
+
 ## Cómo trabajar
 
 Aplica lo que se te pida en cada paso del expositor (extracción, cruce, Excel). Trabaja solo
